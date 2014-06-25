@@ -14,10 +14,10 @@ class TextPressSearch
         if(isset($_REQUEST["q"])) {
             $q = $_REQUEST["q"];
             $results = $this->search_in_dir("articles",$q);
-            $l = '<ul>';
+            $list = '<ul>';
             foreach($results as $post)
-                $l .= "<li><a href=". $post["url"].">". $post['title'] ."</a></li>";
-            $l .= '</ul>';
+                $list .= "<li><a href=". $post["url"].">". $post['title'] ."</a></li>";
+            $list .= '</ul>';
         }
         
         $html = <<<EOT
@@ -26,7 +26,7 @@ class TextPressSearch
 <input type=submit value="Search">
 </form>
 EOT;
-        $html.=$l;
+        $html .= $list;
         return $html;
     }
     
